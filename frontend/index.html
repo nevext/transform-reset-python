@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transformacao Unica com Reset</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Transformacao Unica com Reset</h1>
+    <p class="header-sub">Equipe: Yara Vaz, Samia Albuquerque, David Neves</p>
+    <p class="header-sub">Algebra Linear — CIESA 2026/1</p>
+  </header>
+
+  <main>
+
+    <section class="card" id="section-ponto">
+      <div class="section-title">
+        <span class="step-num">1</span>
+        <div>
+          <h2>Ponto de partida</h2>
+          <p class="section-desc">Digite as coordenadas do seu ponto.</p>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label for="input-x">X:</label>
+          <input type="number" id="input-x" value="3" />
+        </div>
+        <div class="input-group">
+          <label for="input-y">Y:</label>
+          <input type="number" id="input-y" value="2" />
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="section-transform">
+      <div class="section-title">
+        <span class="step-num">2</span>
+        <div>
+          <h2>Escolha uma transformacao</h2>
+          <p class="section-desc">Voce so pode escolher uma. Depois, clique em "Comecar de novo" para tentar outra.</p>
+        </div>
+      </div>
+
+      <div class="transform-grid">
+
+        <div class="transform-card" id="card-girar">
+          <div class="transform-icon blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6"/><path d="M21.34 15.57a10 10 0 1 1-.57-8.38"/>
+            </svg>
+          </div>
+          <div class="transform-info">
+            <strong>Girar</strong>
+            <span>Gira o ponto ao redor da origem.</span>
+          </div>
+          <div class="transform-controls">
+            <label>Quantos graus?</label>
+            <input type="number" id="input-graus" value="45" class="small-input" />
+          </div>
+          <button class="btn btn-blue" onclick="aplicarGirar()">Girar</button>
+        </div>
+
+        <div class="transform-card" id="card-esticar">
+          <div class="transform-icon green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+              <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+            </svg>
+          </div>
+          <div class="transform-info">
+            <strong>Esticar</strong>
+            <span>Aumenta ou diminui o tamanho do ponto.</span>
+          </div>
+          <div class="transform-controls">
+            <label>Quanto no X?</label>
+            <input type="number" id="input-sx" value="2" class="small-input" />
+            <label>Quanto no Y?</label>
+            <input type="number" id="input-sy" value="1.5" class="small-input" />
+          </div>
+          <button class="btn btn-green" onclick="aplicarEsticar()">Esticar</button>
+        </div>
+
+        <div class="transform-card" id="card-espelhar">
+          <div class="transform-icon blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3"/><path d="M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3"/>
+              <line x1="12" y1="3" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="transform-info">
+            <strong>Espelhar</strong>
+            <span>Vira o ponto como num espelho.</span>
+          </div>
+          <div class="transform-controls">
+            <label>Escolha o espelho:</label>
+            <div class="eixo-buttons">
+              <button class="btn-eixo active" id="eixo-x" onclick="selecionarEixo('x')">No X</button>
+              <button class="btn-eixo" id="eixo-y" onclick="selecionarEixo('y')">No Y</button>
+              <button class="btn-eixo" id="eixo-o" onclick="selecionarEixo('o')">Na origem</button>
+            </div>
+          </div>
+          <button class="btn btn-blue" onclick="aplicarEspelhar()">Espelhar</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card" id="section-resultado" style="display:none">
+      <div class="section-title">
+        <span class="step-num green-num">3</span>
+        <h2>Resultado</h2>
+      </div>
+      <p class="resultado-texto" id="resultado-texto"></p>
+      <canvas id="canvas" width="600" height="340"></canvas>
+      <div class="legenda">
+        <span class="legenda-item"><span class="dot blue-dot"></span> Azul = ponto de partida</span>
+        <span class="legenda-item"><span class="dot green-dot"></span> Verde = resultado</span>
+      </div>
+
+      <div class="calculo-wrapper">
+        <button class="btn-calculo" onclick="toggleCalculo()">
+          Ver os calculos
+          <span id="calculo-arrow">+</span>
+        </button>
+        <div class="calculo-box" id="calculo-box" style="display:none">
+          <pre id="calculo-texto"></pre>
+        </div>
+      </div>
+    </section>
+
+    <div id="aviso-bloqueio" class="aviso" style="display:none">
+      Uma transformacao ja foi aplicada. Clique em "Comecar de novo" para tentar outra.
+    </div>
+
+    <button class="btn-reset" id="btn-reset" style="display:none" onclick="resetar()">
+      Comecar de novo
+    </button>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
