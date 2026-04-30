@@ -9,7 +9,7 @@ Aplicação individual de transformação linear com opção de reinício, desen
 - Python 3.x
 - Biblioteca `math` (nativa do Python)
 - Overleaf (documentação acadêmica)
-- HTML, CSS e JavaScript (frontend visual — bônus)
+- HTML, CSS e JavaScript (frontend visual (bônus))
 
 ---
 
@@ -27,7 +27,7 @@ Rode o programa:
 python transformacao_unica.py
 ```
 
-Nenhuma instalação de dependências necessária — o projeto usa apenas a biblioteca padrão do Python.
+Nenhuma instalação de dependências necessária portanto o projeto usa apenas a biblioteca padrão do Python.
 
 ---
 
@@ -37,11 +37,10 @@ Nenhuma instalação de dependências necessária — o projeto usa apenas a bib
 tranform-reset-python/
 ├── code/
 │   └── transformacao_unica.py   → código principal com a lógica e as transformações
-├── doc/
-│   └── frontend/
-│       ├── index.html           → interface visual do projeto
-│       ├── style.css            → estilização
-│       └── script.js            → lógica de integração visual
+├── frontend/
+│   ├── index.html           → interface visual do projeto
+│   ├── style.css            → estilização
+│   └── script.js            → lógica de integração visual
 └── README.md                    → documentação
 ```
 
@@ -49,7 +48,7 @@ tranform-reset-python/
 
 ## O que o programa faz
 
-O projeto aplica **transformações lineares** em um vetor 2D (ponto no plano) usando multiplicação de matriz 2×2. A regra principal é: só é permitida **uma transformação por vez** — após aplicar, o usuário deve resetar para fazer outra.
+O projeto aplica **transformações lineares** em um vetor 2D (ponto no plano) usando multiplicação de matriz 2×2. A regra principal é: só é permitida **uma transformação por vez** e após aplicar, o usuário deve resetar para fazer outra.
 
 ### Transformações disponíveis
 
@@ -94,10 +93,10 @@ Todos os integrantes são responsáveis por:
 | Integrante | Responsabilidade principal |
 |---|---|
 | David Neves | Estrutura do repositório, código principal, frontend (bônus) e README |
-| Samia Albuquerque | Estrutura inicial do código, lógica da classe `TransformacaoUnica` |
-| Yara da Silva Vaz | Documentação no Overleaf e apoio na implementação das transformações |
+| Samia Albuquerque | Entender a estrutura, conceitos e definições do código e assunto |
+| Yara da Silva Vaz | Entender a estrutura, conceitos e definições do código e assunto |
 
-> O frontend em HTML/CSS/JS é um bônus visual — não faz parte da entrega obrigatória, mas demonstra as transformações de forma interativa no navegador.
+> O frontend em HTML/CSS/JS é um bônus visual e não faz parte da entrega obrigatória, mas demonstra as transformações de forma interativa no navegador.
 
 ---
 
@@ -108,4 +107,4 @@ Todos os integrantes são responsáveis por:
 - Yara da Silva Vaz
 
 **Professor:** Francisco de Assis Souza de Oliveira  
-**Disciplina:** Álgebra Linear — CIESA 2026/1
+**Disciplina:** Álgebra Linear  CIESA 2026/1
